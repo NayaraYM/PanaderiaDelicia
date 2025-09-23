@@ -1,265 +1,351 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Panadería Delicia - Productos</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-  <style>
-    :root { --rosado-pastel: #f8bbd0; --rosado: #e91e63; --rosado-oscuro: #ad1457; }
-    body { font-family: 'Poppins', sans-serif; background-color: #fff5f8; scroll-behavior: smooth; }
-    .topbar { background-color: var(--rosado-pastel); }
-    .topbar a { color: white; margin-left: 10px; transition: color 0.3s; }
-    .topbar a:hover { color: var(--rosado-oscuro); }
-    .navbar-brand { color: var(--rosado); font-weight: 700; font-size: 1.9rem; }
-    .nav-link.active, .nav-link:hover { color: var(--rosado); text-decoration: underline; }
-    .btn-rosado { background-color: var(--rosado); color: white; font-weight: 600; padding: 0.6rem 1.5rem; border-radius: 50px; transition: all 0.3s ease; }
-    .btn-rosado:hover { background-color: var(--rosado-oscuro); box-shadow: 0 6px 20px rgba(173, 20, 87, 0.5); }
-    .product-card { border-radius: 15px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.12); transition: transform 0.4s, box-shadow 0.4s; cursor: pointer; }
-    .product-card:hover { transform: scale(1.05); box-shadow: 0 12px 30px rgba(233,30,99,0.4); }
-    .product-card img { width: 100%; height: 250px; object-fit: cover; }
-    #mini-cart { z-index: 1050; }
-    footer { background-color: #212529; color: #eee; padding: 3rem 1rem; text-align: center; }
-    footer h2 { color: var(--rosado); font-weight: 700; margin-bottom: 1rem; }
-    footer a { color: #eee; font-size: 1.3rem; margin: 0 0.6rem; transition: color 0.3s ease; }
-    footer a:hover { color: var(--rosado); }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panadería Delicia - Productos</title>
 
-  <!-- Topbar -->
-  <div class="container-fluid topbar py-2 d-none d-md-block">
-    <div class="container text-end">
-      <i class="fa fa-map-marker-alt"></i> Calle Dulce #123, Lima
-      &nbsp; | &nbsp;
-      <i class="fa fa-phone"></i> +51 999 999 999
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-    </div>
-  </div>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow sticky-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Panadería <span>Delicia</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div id="navbarNav" class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav fs-5">
-          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">Nosotros</a></li>
-          <li class="nav-item"><a class="nav-link active" href="product.html">Productos</a></li>
-          <li class="nav-item"><a class="nav-link" href="service.html">Servicios</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contacto</a></li>
-          <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-shopping-cart"></i> Carrito</a></li>
-        </ul>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- AOS Animations -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="css/product.css" />
+  </head>
+  <body>
+    <!-- Topbar -->
+    <div
+      class="container-fluid topbar py-2 d-none d-md-block"
+      data-aos="fade-down"
+      data-aos-duration="1000"
+    >
+      <div class="container text-end">
+        <i class="fa fa-map-marker-alt"></i> Calle Dulce #123, Lima &nbsp; |
+        &nbsp; <i class="fa fa-phone"></i> +51 999 999 999
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
-  </nav>
 
-  <!-- Header -->
-  <header class="text-center py-5 bg-rosado-pastel">
-    <h1 class="fw-bold text-rosado">Nuestros Productos</h1>
-    <p>Delicias que alegran tu día</p>
-  </header>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white shadow sticky-top"
+      data-aos="fade-down"
+      data-aos-duration="1200"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          >Panadería <span>Delicia</span></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          id="navbarNav"
+          class="collapse navbar-collapse justify-content-end"
+        >
+          <ul class="navbar-nav fs-5">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="product.html">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="service.html">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link position-relative"
+                href="#"
+                data-bs-toggle="modal"
+                data-bs-target="#cartModal"
+              >
+                🛒 Carrito <span id="cart-count" class="cart-count">0</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-  <!-- Productos -->
-  <section class="container py-5">
-    <div class="row g-4">
+    <!-- Header -->
+    <header class="text-center py-5 bg-rosado-pastel" data-aos="fade-up">
+      <h1 class="fw-bold text-rosado">Nuestros Productos</h1>
+      <p>El sabor de lo artesanal en cada mordisco</p>
+    </header>
 
-      <!-- Producto 1 -->
-      <div class="col-md-4">
-        <div class="product-card" data-name="Pan Integral" data-price="5.00" data-img="img/portfolio-1.jfif">
-          <img src="img/portfolio-1.jfif" alt="Pan Integral">
-          <div class="p-3">
-            <h5 class="fw-bold">Pan Integral</h5>
-            <p class="text-muted">Nutritivo y fresco, ideal para el desayuno.</p>
-            <p class="fw-bold">S/ 5.00</p>
-            <button class="btn btn-rosado btn-sm buy-btn">Comprar</button>
+    <!-- Productos -->
+    <div class="container py-5">
+      <div class="row g-4" id="product-list">
+        <!-- Producto 1 -->
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="card h-100 product-card">
+            <img
+              src="img/pan1.jfif"
+              class="card-img-top"
+              alt="Tarta de Fresa"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">Tarta de Fresa</h5>
+              <p class="card-text">
+                Suave bizcocho con relleno de mermelada de fresa.
+              </p>
+              <p class="fw-bold">S/ 4.00</p>
+              <button
+                class="btn btn-rosado view-detail"
+                data-name="Tarta de Fresa"
+                data-price="4.00"
+                data-img="img/pan1.jfif"
+                data-desc="Mini tarta cubierta de glasé ligero y rellena de mermelada de fresa natural, perfecta para acompañar el café."
+              >
+                Ver más
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 2 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 product-card">
+            <img
+              src="img/pan2.jfif"
+              class="card-img-top"
+              alt="ChocoBite Vainilla"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">ChocoBite Vainilla</h5>
+              <p class="card-text">
+                Suave galleta en forma de dona sabor vainilla con cobertura
+                parcial de chocolate semiamargo.
+              </p>
+              <p class="fw-bold">S/ 2.00</p>
+              <button
+                class="btn btn-rosado view-detail"
+                data-name="ChocoBite Vainilla"
+                data-price="2.00"
+                data-img="img/pan2.jfif"
+                data-desc="Suave galleta de vainilla en forma de dona, bañada a la mitad con chocolate semiamargo. Perfecta para acompañar tu café o como snack dulce."
+              >
+                Ver más
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 3 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100 product-card">
+            <img
+              src="img/pan3.jfif"
+              class="card-img-top"
+              alt="Tarta Banoffee"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">Tarta Banoffee</h5>
+              <p class="card-text">
+                Tarta de plátano con suave crema de manjar y base crocante.
+              </p>
+              <p class="fw-bold">S/ 4.50</p>
+              <button
+                class="btn btn-rosado view-detail"
+                data-name="Tarta Banoffee"
+                data-price="4.50"
+                data-img="img/pan3.jfif"
+                data-desc="Deliciosa tarta de origen inglés con capas de plátano fresco, crema de manjar y una base crocante de galleta. Un postre irresistible para los amantes del dulce."
+              >
+                Ver más
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 4 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100 product-card">
+            <img
+              src="img/pan4.jfif"
+              class="card-img-top"
+              alt="Muffin ChocoDelicia"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">Muffin ChocoDelicia</h5>
+              <p class="card-text">
+                Muffin esponjoso con intenso sabor a chocolate.
+              </p>
+              <p class="fw-bold">S/ 3.00</p>
+              <button
+                class="btn btn-rosado view-detail"
+                data-name="Muffin ChocoDelicia"
+                data-price="3.00"
+                data-img="img/pan4.jfif"
+                data-desc="Esponjoso muffin de cacao puro con trozos de chocolate derretido en su interior. Ideal para los más chocolateros."
+              >
+                Ver más
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 5 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="card h-100 product-card">
+            <img
+              src="img/pan5.jfif"
+              class="card-img-top"
+              alt="Pastel de Fresa"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">Pastel de Fresa</h5>
+              <p class="card-text">Suave bizcocho con fresas frescas.</p>
+              <p class="fw-bold">S/ 10.00</p>
+              <button
+                class="btn btn-rosado view-detail"
+                data-name="Pastel de Fresa"
+                data-price="10.00"
+                data-img="img/pan5.jfif"
+                data-desc="Pastel suave decorado con fresas naturales y crema."
+              >
+                Ver más
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Producto 6 -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+          <div class="card h-100 product-card">
+            <img
+              src="img/pan6.jfif"
+              class="card-img-top"
+              alt="Galletas RubyBlancas"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">Galletas RubyBlancas</h5>
+              <p class="card-text">
+                Galletas crujientes con frambuesa y trozos de chocolate blanco.
+              </p>
+              <p class="fw-bold">S/ 4.50</p>
+              <button
+                class="btn btn-rosado view-detail"
+                data-name="Galletas RubyBlancas"
+                data-price="4.50"
+                data-img="img/pan6.jfif"
+                data-desc="Deliciosas galletas artesanales con un toque ácido de frambuesa, equilibrado con la suavidad del chocolate blanco. Ideales para acompañar con café o té."
+              >
+                Ver más
+              </button>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Producto 2 -->
-      <div class="col-md-4">
-        <div class="product-card" data-name="Croissants" data-price="3.50" data-img="img/portfolio-2.jfif">
-          <img src="img/portfolio-2.jfif" alt="Croissants">
-          <div class="p-3">
-            <h5 class="fw-bold">Croissants</h5>
-            <p class="text-muted">Delicados y hojaldrados, perfectos para acompañar tu café.</p>
-            <p class="fw-bold">S/ 3.50</p>
-            <button class="btn btn-rosado btn-sm buy-btn">Comprar</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Producto 3 -->
-      <div class="col-md-4">
-        <div class="product-card" data-name="Tortas de Cumpleaños" data-price="50.00" data-img="img/portfolio-3.jfif">
-          <img src="img/portfolio-3.jfif" alt="Tortas de Cumpleaños">
-          <div class="p-3">
-            <h5 class="fw-bold">Tortas de Cumpleaños</h5>
-            <p class="text-muted">Diseños únicos y personalizados para tus celebraciones.</p>
-            <p class="fw-bold">S/ 50.00</p>
-            <button class="btn btn-rosado btn-sm buy-btn">Comprar</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Producto 4 -->
-      <div class="col-md-4">
-        <div class="product-card" data-name="Muffins" data-price="4.00" data-img="img/portfolio-4.jfif">
-          <img src="img/portfolio-4.jfif" alt="Muffins">
-          <div class="p-3">
-            <h5 class="fw-bold">Muffins</h5>
-            <p class="text-muted">Pequeñas delicias suaves y esponjosas para cualquier momento.</p>
-            <p class="fw-bold">S/ 4.00</p>
-            <button class="btn btn-rosado btn-sm buy-btn">Comprar</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Producto 5 -->
-      <div class="col-md-4">
-        <div class="product-card" data-name="Pan de Chocolate" data-price="6.00" data-img="img/portfolio-5.jfif">
-          <img src="img/portfolio-5.jfif" alt="Pan de Chocolate">
-          <div class="p-3">
-            <h5 class="fw-bold">Pan de Chocolate</h5>
-            <p class="text-muted">Irresistible sabor con trozos de chocolate.</p>
-            <p class="fw-bold">S/ 6.00</p>
-            <button class="btn btn-rosado btn-sm buy-btn">Comprar</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Producto 6 -->
-      <div class="col-md-4">
-        <div class="product-card" data-name="Galletas Artesanales" data-price="2.50" data-img="img/portfolio-6.jfif">
-          <img src="img/portfolio-6.jfif" alt="Galletas Artesanales">
-          <div class="p-3">
-            <h5 class="fw-bold">Galletas Artesanales</h5>
-            <p class="text-muted">Crujientes y deliciosas, hechas con mucho amor.</p>
-            <p class="fw-bold">S/ 2.50</p>
-            <button class="btn btn-rosado btn-sm buy-btn">Comprar</button>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </section>
 
-  <!-- Mini Carrito -->
-  <div id="mini-cart" class="position-fixed bottom-0 end-0 p-3">
-    <button class="btn btn-rosado" id="mini-cart-btn">
-      🛒 Carrito (<span id="cart-count">0</span>) - S/ <span id="cart-total">0.00</span>
-    </button>
-  </div>
-
-  <!-- Modal Login -->
-  <div class="modal fade" id="loginModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content p-4">
-        <h5>Iniciar Sesión</h5>
-        <form id="loginForm">
-          <input type="text" class="form-control mb-2" placeholder="Usuario" required>
-          <input type="password" class="form-control mb-2" placeholder="Contraseña" required>
-          <button type="submit" class="btn btn-rosado w-100">Continuar</button>
-        </form>
+    <!-- Modal Detalle Producto -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 id="modalTitle" class="modal-title"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body text-center">
+            <img id="modalImg" src="" class="img-fluid mb-3" alt="Producto" />
+            <p id="modalDesc"></p>
+            <p class="fw-bold">Precio: S/ <span id="modalPrice"></span></p>
+            <div class="d-flex justify-content-center align-items-center gap-2">
+              <label for="modalQty" class="form-label mb-0">Cantidad:</label>
+              <input
+                type="number"
+                id="modalQty"
+                class="form-control w-25"
+                value="1"
+                min="1"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="addToCartBtn" class="btn btn-rosado">
+              Agregar al Carrito
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Modal Pago -->
-  <div class="modal fade" id="paymentModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content p-4">
-        <h5>Elige tu método de pago</h5>
-        <button class="btn btn-rosado w-100 mb-2" onclick="pay('Tarjeta')">Tarjeta</button>
-        <button class="btn btn-rosado w-100" onclick="pay('Yape')">Yape</button>
+    <!-- Modal Carrito -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Carrito de Compras</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <ul id="cart-items" class="list-group mb-3"></ul>
+            <h5 class="text-end">
+              Total: S/ <span id="cart-total">0.00</span>
+            </h5>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success">Pagar</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Footer -->
-  <footer>
-    <h2 class="fw-bold text-rosado mb-3">Panadería Delicia</h2>
-    <p>Email: PanaderiaDelicia@gmail.com | Tel: +51 999 999 999</p>
-    <p>Horario: Lunes – Sábado, 7AM – 10PM | Domingo: Cerrado</p>
-    <div class="mb-3">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-    </div>
-    <p class="mb-0">© 2025 Panadería Delicia. Todos los derechos reservados.</p>
-  </footer>
+    <!-- Footer -->
+    <footer data-aos="fade-up" data-aos-duration="1000">
+      <h2 class="fw-bold text-rosado mb-3">Panadería Delicia</h2>
+      <p>Email: PanaderiaDelicia@gmail.com | Tel: +51 999 999 999</p>
+      <p>Horario: Lunes – Sábado, 7AM – 10PM | Domingo: Cerrado</p>
+      <div class="mb-3">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <p class="mb-0">
+        © 2025 Panadería Delicia. Todos los derechos reservados.
+      </p>
+    </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script>
-    AOS.init({ once: true, offset: 120 });
-
-    const buyButtons = document.querySelectorAll('.buy-btn');
-    const cartCount = document.getElementById('cart-count');
-    const cartTotal = document.getElementById('cart-total');
-
-    function updateMiniCart() {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      let totalQty = 0, totalPrice = 0;
-      cart.forEach(item => { totalQty += item.quantity; totalPrice += item.price * item.quantity; });
-      cartCount.textContent = totalQty;
-      cartTotal.textContent = totalPrice.toFixed(2);
-    }
-
-    buyButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card = btn.closest('.product-card');
-        const name = card.dataset.name;
-        const price = parseFloat(card.dataset.price);
-        const img = card.dataset.img;
-        const quantity = parseInt(prompt(`¿Cuántos ${name} deseas comprar?`, 1));
-        if (quantity && quantity > 0) {
-          const cart = JSON.parse(localStorage.getItem('cart')) || [];
-          cart.push({ name, price, quantity, img });
-          localStorage.setItem('cart', JSON.stringify(cart));
-          alert(`${quantity} ${name}(s) agregados al carrito.\nSubtotal: S/ ${(price*quantity).toFixed(2)}`);
-          updateMiniCart();
-        }
-      });
-    });
-
-    document.getElementById('mini-cart-btn').addEventListener('click', () => {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      if (cart.length === 0) { alert('El carrito está vacío'); return; }
-      new bootstrap.Modal(document.getElementById('loginModal')).show();
-    });
-
-    document.getElementById('loginForm').addEventListener('submit', e => {
-      e.preventDefault();
-      bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
-      new bootstrap.Modal(document.getElementById('paymentModal')).show();
-    });
-
-    function pay(method) {
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      let receipt = '=== FACTURA ===\n';
-      let total = 0;
-      cart.forEach(item => {
-        receipt += `${item.name} x${item.quantity} = S/ ${(item.price*item.quantity).toFixed(2)}\n`;
-        total += item.price * item.quantity;
-      });
-      receipt += `TOTAL: S/ ${total.toFixed(2)}\nMétodo de pago: ${method}`;
-      alert(receipt);
-      localStorage.removeItem('cart');
-      updateMiniCart();
-      bootstrap.Modal.getInstance(document.getElementById('paymentModal')).hide();
-    }
-
-    updateMiniCart();
-  </script>
-</body>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="js/productos.js"></script>
+    <script>
+      AOS.init({ once: true, offset: 120 });
+    </script>
+  </body>
 </html>
