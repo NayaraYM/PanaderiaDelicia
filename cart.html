@@ -1,171 +1,307 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Carrito - Panadería Delicia</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carrito - Panadería Delicia</title>
 
-  <style>
-    :root {
-      --rosado: #e91e63;
-      --rosado-oscuro: #ad1457;
-      --rosado-pastel: #f8bbd0;
-    }
-    body { font-family: 'Poppins', sans-serif; background-color: #fff5f8; }
-    .btn-rosado { background-color: var(--rosado); color: white; font-weight: 600; padding: 0.5rem 1rem; border-radius: 50px; transition: all 0.3s ease; }
-    .btn-rosado:hover { background-color: var(--rosado-oscuro); }
-    table img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
-    h1.fw-bold.text-rosado { color: var(--rosado); margin-bottom: 2rem; text-align: center; }
-  </style>
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <div class="container py-5">
-    <h1 class="fw-bold text-rosado">Carrito de Compras</h1>
-    <div id="cart-container"></div>
-    <div class="text-end mt-3">
-      <h4>Total: S/ <span id="total">0.00</span></h4>
-      <button class="btn btn-rosado mt-2" id="checkout-btn">Pagar</button>
+    <style>
+      :root {
+        --rosado: #e91e63;
+        --rosado-oscuro: #ad1457;
+        --rosado-pastel: #f8bbd0;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #fff5f8;
+      }
+      .btn-rosado {
+        background-color: var(--rosado);
+        color: white;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+      }
+      .btn-rosado:hover {
+        background-color: var(--rosado-oscuro);
+      }
+      table img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+      h1.fw-bold.text-rosado {
+        color: var(--rosado);
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .modal-content {
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-5">
+      <h1 class="fw-bold text-rosado">Carrito de Compras</h1>
+
+      <div id="cart-container" class="mb-3"></div>
+
+      <div class="text-end">
+        <h4>Total: S/ <span id="total">0.00</span></h4>
+        <button class="btn btn-rosado mt-2" id="checkout-btn">Pagar</button>
+      </div>
     </div>
-  </div>
 
-  <!-- Login Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Iniciar Sesión</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <form id="loginForm">
-            <div class="mb-3">
-              <label class="form-label">Usuario</label>
-              <input type="text" class="form-control" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Contraseña</label>
-              <input type="password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-rosado w-100">Ingresar</button>
-          </form>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div
+            class="modal-header"
+            style="
+              background: var(--rosado);
+              color: white;
+              border-top-left-radius: 12px;
+              border-top-right-radius: 12px;
+            "
+          >
+            <h5 class="modal-title">Iniciar Sesión</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="loginForm">
+              <div class="mb-3">
+                <label class="form-label">Usuario (email)</label>
+                <input
+                  type="email"
+                  id="loginEmail"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <input
+                  type="password"
+                  id="loginPassword"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-rosado w-100">
+                Ingresar
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Payment Modal -->
-  <div class="modal fade" id="paymentModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Tipo de Pago</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <p>Seleccione su método de pago:</p>
-          <button class="btn btn-rosado w-100 mb-2" onclick="pay('Tarjeta')">Tarjeta</button>
-          <button class="btn btn-rosado w-100" onclick="pay('Yape')">Yape</button>
+    <!-- Payment Modal -->
+    <div class="modal fade" id="paymentModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div
+            class="modal-header"
+            style="background: var(--rosado); color: white"
+          >
+            <h5 class="modal-title">Tipo de Pago</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Seleccione su método de pago:</p>
+            <div class="d-grid gap-2">
+              <button class="btn btn-rosado" onclick="performPay('Tarjeta')">
+                Tarjeta
+              </button>
+              <button class="btn btn-rosado" onclick="performPay('Yape')">
+                Yape
+              </button>
+              <button class="btn btn-rosado" onclick="performPay('Efectivo')">
+                Efectivo
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center p-4">
+          <h4 class="text-success fw-bold mb-3">
+            ✅ ¡Pago realizado con éxito!
+          </h4>
+          <p>
+            Tu pedido ha sido confirmado. Gracias por comprar en Panadería
+            Delicia 🍞
+          </p>
+          <a href="index.html" class="btn btn-rosado mt-3">Volver al inicio</a>
+        </div>
+      </div>
+    </div>
 
-  <script>
-    // Cargar carrito desde localStorage
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- productos.js (misma lógica compartida) -->
+    <script src="js/productos.js"></script>
 
-    function renderCart() {
-      if(cart.length === 0) {
-        document.getElementById('cart-container').innerHTML = '<p class="text-center">El carrito está vacío.</p>';
-        document.getElementById('total').innerText = '0.00';
-        return;
+    <script>
+      // render del carrito en la página principal del carrito
+      function renderCartPage() {
+        const container = document.getElementById("cart-container");
+        const totalEl = document.getElementById("total");
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (cart.length === 0) {
+          container.innerHTML =
+            '<p class="text-center text-muted">El carrito está vacío.</p>';
+          if (totalEl) totalEl.textContent = "0.00";
+          return;
+        }
+
+        let html = `<div class="table-responsive"><table class="table align-middle text-center">
+        <thead class="table-light"><tr><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th><th>Eliminar</th></tr></thead><tbody>`;
+        let total = 0;
+        cart.forEach((item, index) => {
+          const subtotal = item.price * item.quantity;
+          total += subtotal;
+          html += `<tr>
+          <td class="text-start"><div class="d-flex align-items-center gap-3"><img src="${
+            item.img
+          }" alt="${item.name}" width="80" height="80"><div><strong>${
+            item.name
+          }</strong><br><small class="text-muted">S/ ${item.price.toFixed(
+            2
+          )}</small></div></div></td>
+          <td>S/ ${item.price.toFixed(2)}</td>
+          <td><input type="number" min="1" value="${
+            item.quantity
+          }" class="form-control form-control-sm quantity-input" data-index="${index}" style="width:90px; margin:0 auto;"></td>
+          <td>S/ ${subtotal.toFixed(2)}</td>
+          <td><button class="btn btn-danger btn-sm remove-btn" data-index="${index}"><i class="fa fa-trash"></i></button></td>
+        </tr>`;
+        });
+        html += `</tbody></table></div>`;
+        container.innerHTML = html;
+        if (totalEl) totalEl.textContent = total.toFixed(2);
+
+        // agregar listeners (delegación local)
+        document.querySelectorAll(".remove-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const idx = parseInt(btn.dataset.index);
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.splice(idx, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCartPage();
+            // actualizar contador (si hay navbar en esta página)
+            const updateEvt = new Event("cartUpdated");
+            window.dispatchEvent(updateEvt);
+          });
+        });
+
+        document.querySelectorAll(".quantity-input").forEach((input) => {
+          input.addEventListener("change", () => {
+            const idx = parseInt(input.dataset.index);
+            let val = parseInt(input.value);
+            if (isNaN(val) || val < 1) {
+              input.value = 1;
+              val = 1;
+            }
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart[idx].quantity = val;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            renderCartPage();
+            window.dispatchEvent(new Event("cartUpdated"));
+          });
+        });
       }
 
-      let html = `<table class="table table-bordered align-middle text-center">
-                    <thead class="table-light">
-                      <tr>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Subtotal</th>
-                        <th>Eliminar</th>
-                      </tr>
-                    </thead>
-                    <tbody>`;
-      let total = 0;
-      cart.forEach((item, index) => {
-        const subtotal = item.price * item.quantity;
-        total += subtotal;
-        html += `<tr>
-                  <td><img src="${item.img}" alt="${item.name}"> <br> ${item.name}</td>
-                  <td>S/ ${item.price.toFixed(2)}</td>
-                  <td><input type="number" min="1" value="${item.quantity}" class="form-control quantity-input" data-index="${index}"></td>
-                  <td>S/ ${subtotal.toFixed(2)}</td>
-                  <td><button class="btn btn-danger btn-sm remove-btn" data-index="${index}"><i class="fa fa-trash"></i></button></td>
-                 </tr>`;
+      document.addEventListener("DOMContentLoaded", () => {
+        renderCartPage();
+
+        // Checkout button opens login modal
+        document
+          .getElementById("checkout-btn")
+          .addEventListener("click", () => {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (cart.length === 0) {
+              alert("El carrito está vacío");
+              return;
+            }
+            new bootstrap.Modal(document.getElementById("loginModal")).show();
+          });
+
+        // login form (en modal)
+        const loginForm = document.getElementById("loginForm") || null;
+        if (loginForm) {
+          loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const email = document.getElementById("loginEmail").value.trim();
+            const pass = document.getElementById("loginPassword").value.trim();
+            if (!email || !pass) {
+              alert("Completa ambos campos");
+              return;
+            }
+            // guardamos usuario básico (solo email) y abrimos modal de pago
+            localStorage.setItem("user", JSON.stringify({ email }));
+            bootstrap.Modal.getInstance(
+              document.getElementById("loginModal")
+            ).hide();
+            new bootstrap.Modal(document.getElementById("paymentModal")).show();
+          });
+        }
+
+        // confirmar pago desde modal de métodos (la función principal está abajo)
       });
-      html += `</tbody></table>`;
-      document.getElementById('cart-container').innerHTML = html;
-      document.getElementById('total').innerText = total.toFixed(2);
 
-      // Eventos de cantidad
-      document.querySelectorAll('.quantity-input').forEach(input => {
-        input.addEventListener('change', e => {
-          const idx = e.target.dataset.index;
-          const val = parseInt(e.target.value);
-          if(val < 1) { e.target.value = cart[idx].quantity; return; }
-          cart[idx].quantity = val;
-          localStorage.setItem('cart', JSON.stringify(cart));
-          renderCart();
-        });
-      });
+      // método de pago: limpia carrito y muestra confirmación
+      function performPay(method) {
+        // obtener totals / items si quieres construir recibo
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (cart.length === 0) {
+          alert("El carrito está vacío");
+          return;
+        }
+        // cerrar modal y mostrar confirmación
+        const paymentModalEl = document.getElementById("paymentModal");
+        const modalInstance = bootstrap.Modal.getInstance(paymentModalEl);
+        if (modalInstance) modalInstance.hide();
 
-      // Eventos eliminar
-      document.querySelectorAll('.remove-btn').forEach(btn => {
-        btn.addEventListener('click', e => {
-          const idx = btn.dataset.index;
-          cart.splice(idx, 1);
-          localStorage.setItem('cart', JSON.stringify(cart));
-          renderCart();
-        });
-      });
-    }
+        // aquí podrías integrar con pasarela real, pero por ahora confirmamos
+        // vaciamos carrito
+        localStorage.removeItem("cart");
+        // actualizar UI
+        renderCartPage();
+        // actualizar contador en navbar en otras páginas
+        window.dispatchEvent(new Event("cartUpdated"));
 
-    renderCart();
-
-    // Checkout
-    document.getElementById('checkout-btn').addEventListener('click', () => {
-      if(cart.length === 0) { alert('El carrito está vacío'); return; }
-      const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-      loginModal.show();
-    });
-
-    // Login Form
-    document.getElementById('loginForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-      loginModal.hide();
-      const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
-      paymentModal.show();
-    });
-
-    // Pago
-    function pay(method) {
-      const paymentModal = bootstrap.Modal.getInstance(document.getElementById('paymentModal'));
-      paymentModal.hide();
-      alert(`¡Pago realizado con ${method}!\nGracias por su compra.`);
-      cart = [];
-      localStorage.removeItem('cart');
-      renderCart();
-    }
-  </script>
-
-</body>
+        // mostrar modal de confirmación
+        new bootstrap.Modal(document.getElementById("confirmModal")).show();
+      }
+    </script>
+  </body>
 </html>

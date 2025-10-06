@@ -20,13 +20,39 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- AOS Animations -->
+    <!-- AOS -->
     <link
       href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
       rel="stylesheet"
     />
-    <!-- CSS propio -->
+    <!-- CSS propio (NO lo cambié) -->
     <link rel="stylesheet" href="css/product.css" />
+
+    <style>
+      /* pequeñas utilidades necesarias (no alteran diseño) */
+      .btn-rosado {
+        background-color: #e91e63;
+        color: #fff;
+        border-radius: 50px;
+      }
+      .btn-rosado:hover {
+        background-color: #ad1457;
+        color: #fff;
+      }
+      .text-rosado {
+        color: #e91e63;
+      }
+      .bg-rosado-pastel {
+        background-color: #fff0f4;
+      }
+      /* Toast position */
+      .toast-container {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        z-index: 1080;
+      }
+    </style>
   </head>
   <body>
     <!-- Topbar -->
@@ -38,9 +64,9 @@
       <div class="container text-end">
         <i class="fa fa-map-marker-alt"></i> Calle Dulce #123, Lima &nbsp; |
         &nbsp; <i class="fa fa-phone"></i> +51 999 999 999
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f ms-2"></i></a>
+        <a href="#"><i class="fab fa-twitter ms-2"></i></a>
+        <a href="#"><i class="fab fa-instagram ms-2"></i></a>
       </div>
     </div>
 
@@ -66,7 +92,7 @@
           id="navbarNav"
           class="collapse navbar-collapse justify-content-end"
         >
-          <ul class="navbar-nav fs-5">
+          <ul class="navbar-nav fs-5 align-items-center">
             <li class="nav-item">
               <a class="nav-link" href="index.html">Inicio</a>
             </li>
@@ -89,7 +115,12 @@
                 data-bs-toggle="modal"
                 data-bs-target="#cartModal"
               >
-                🛒 Carrito <span id="cart-count" class="cart-count">0</span>
+                🛒 Carrito
+                <span
+                  id="cart-count"
+                  class="cart-count badge bg-rosado-pastel text-rosado ms-1"
+                  >0</span
+                >
               </a>
             </li>
           </ul>
@@ -125,7 +156,7 @@
                 data-name="Tarta de Fresa"
                 data-price="4.00"
                 data-img="img/pan1.jfif"
-                data-desc="Mini tarta cubierta de glasé ligero y rellena de mermelada de fresa natural, perfecta para acompañar el café."
+                data-desc="Mini tarta cubierta de glasé ligero y rellena de mermelada de fresa natural."
               >
                 Ver más
               </button>
@@ -143,8 +174,7 @@
             <div class="card-body text-center">
               <h5 class="card-title">ChocoBite Vainilla</h5>
               <p class="card-text">
-                Suave galleta en forma de dona sabor vainilla con cobertura
-                parcial de chocolate semiamargo.
+                Dona de vainilla con cobertura parcial de chocolate.
               </p>
               <p class="fw-bold">S/ 2.00</p>
               <button
@@ -152,7 +182,7 @@
                 data-name="ChocoBite Vainilla"
                 data-price="2.00"
                 data-img="img/pan2.jfif"
-                data-desc="Suave galleta de vainilla en forma de dona, bañada a la mitad con chocolate semiamargo. Perfecta para acompañar tu café o como snack dulce."
+                data-desc="Suave galleta de vainilla en forma de dona, bañada con chocolate semiamargo."
               >
                 Ver más
               </button>
@@ -170,7 +200,7 @@
             <div class="card-body text-center">
               <h5 class="card-title">Tarta Banoffee</h5>
               <p class="card-text">
-                Tarta de plátano con suave crema de manjar y base crocante.
+                Plátano con crema de manjar y base crocante.
               </p>
               <p class="fw-bold">S/ 4.50</p>
               <button
@@ -178,7 +208,7 @@
                 data-name="Tarta Banoffee"
                 data-price="4.50"
                 data-img="img/pan3.jfif"
-                data-desc="Deliciosa tarta de origen inglés con capas de plátano fresco, crema de manjar y una base crocante de galleta. Un postre irresistible para los amantes del dulce."
+                data-desc="Capas de plátano fresco, crema de manjar y base crocante de galleta."
               >
                 Ver más
               </button>
@@ -204,7 +234,7 @@
                 data-name="Muffin ChocoDelicia"
                 data-price="3.00"
                 data-img="img/pan4.jfif"
-                data-desc="Esponjoso muffin de cacao puro con trozos de chocolate derretido en su interior. Ideal para los más chocolateros."
+                data-desc="Muffin de cacao puro con trozos de chocolate."
               >
                 Ver más
               </button>
@@ -221,14 +251,14 @@
             />
             <div class="card-body text-center">
               <h5 class="card-title">Pastel de Fresa</h5>
-              <p class="card-text">Suave bizcocho con fresas frescas.</p>
+              <p class="card-text">Bizcocho con fresas frescas.</p>
               <p class="fw-bold">S/ 10.00</p>
               <button
                 class="btn btn-rosado view-detail"
                 data-name="Pastel de Fresa"
                 data-price="10.00"
                 data-img="img/pan5.jfif"
-                data-desc="Pastel suave decorado con fresas naturales y crema."
+                data-desc="Pastel decorado con fresas naturales y crema."
               >
                 Ver más
               </button>
@@ -246,7 +276,7 @@
             <div class="card-body text-center">
               <h5 class="card-title">Galletas RubyBlancas</h5>
               <p class="card-text">
-                Galletas crujientes con frambuesa y trozos de chocolate blanco.
+                Galletas con frambuesa y chocolate blanco.
               </p>
               <p class="fw-bold">S/ 4.50</p>
               <button
@@ -254,7 +284,7 @@
                 data-name="Galletas RubyBlancas"
                 data-price="4.50"
                 data-img="img/pan6.jfif"
-                data-desc="Deliciosas galletas artesanales con un toque ácido de frambuesa, equilibrado con la suavidad del chocolate blanco. Ideales para acompañar con café o té."
+                data-desc="Galletas artesanales con frambuesa y chocolate blanco."
               >
                 Ver más
               </button>
@@ -319,14 +349,40 @@
             </h5>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-success">Pagar</button>
+            <!-- ir a cart.html para pago -->
+            <a href="cart.html" class="btn btn-success">Pagar</a>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Toast (confirmación visual al añadir) -->
+    <div class="toast-container">
+      <div
+        id="liveToast"
+        class="toast align-items-center text-white bg-rosado border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div id="toast-body" class="toast-body"></div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+
     <!-- Footer -->
-    <footer data-aos="fade-up" data-aos-duration="1000">
+    <footer
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      class="text-center py-4"
+    >
       <h2 class="fw-bold text-rosado mb-3">Panadería Delicia</h2>
       <p>Email: PanaderiaDelicia@gmail.com | Tel: +51 999 999 999</p>
       <p>Horario: Lunes – Sábado, 7AM – 10PM | Domingo: Cerrado</p>
